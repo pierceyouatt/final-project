@@ -1,4 +1,5 @@
 class MobsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @mobs = Mob.all
 

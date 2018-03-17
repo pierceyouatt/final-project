@@ -1,4 +1,5 @@
 class PcsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @pcs = Pc.all
 
@@ -8,7 +9,7 @@ class PcsController < ApplicationController
   def show
     @pc = Pc.find(params.fetch("id_to_display"))
     @wieldings = Wielding.where(pc_id: @pc.id)
-    
+
     render("pc_templates/show.html.erb")
   end
 

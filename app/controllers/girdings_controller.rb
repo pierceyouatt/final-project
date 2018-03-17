@@ -1,4 +1,5 @@
 class GirdingsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @girdings = Girding.all
 

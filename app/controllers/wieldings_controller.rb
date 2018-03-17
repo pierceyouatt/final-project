@@ -1,4 +1,5 @@
 class WieldingsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @wieldings = Wielding.all
 

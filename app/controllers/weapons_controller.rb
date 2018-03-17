@@ -1,4 +1,5 @@
 class WeaponsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @weapons = Weapon.all
 
