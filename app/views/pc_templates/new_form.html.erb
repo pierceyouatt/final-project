@@ -1,0 +1,144 @@
+
+<!-- Validation failure messages -->
+<% if @pc.present? %>
+  <% if @pc.errors.any? %>
+    <% @pc.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+<h1>
+  Create a new Character
+</h1>
+
+<hr>
+
+<form action="/create_pc" method="post">
+
+  <!-- Label and input for user_id -->
+
+    <div class="form-group">
+      <label for="name">
+        Character Name
+      </label>
+      <input type="text" id="name" name="name" class="form-control" value="<%= @pc.try(:name) %>">
+    </div>
+
+
+  <!-- Label and input for str -->
+
+  <div class="form-group">
+    <label for="str">
+      STR
+    </label>
+    <input type="text" id="str" name="str" class="form-control" value="<%= @pc.try(:str) %>">
+  </div>
+
+  <!-- Label and input for strmod -->
+
+  <!-- Label and input for dex -->
+
+  <div class="form-group">
+    <label for="dex">
+      DEX
+    </label>
+
+
+    <input type="text" id="dex" name="dex" class="form-control" value="<%= @pc.try(:dex) %>">
+
+  </div>
+
+
+
+  <!-- Label and input for dexmod -->
+
+  <!-- Label and input for con -->
+
+  <div class="form-group">
+    <label for="con">
+      CON
+    </label>
+
+
+    <input type="text" id="con" name="con" class="form-control" value="<%= @pc.try(:con) %>">
+
+  </div>
+
+
+
+  <!-- Label and input for int -->
+
+  <div class="form-group">
+    <label for="int">
+      INT
+    </label>
+
+
+    <input type="text" id="int" name="int" class="form-control" value="<%= @pc.try(:int) %>">
+
+  </div>
+
+
+
+  <!-- Label and input for wis -->
+
+  <div class="form-group">
+    <label for="wis">
+      WIS
+    </label>
+
+
+    <input type="text" id="wis" name="wis" class="form-control" value="<%= @pc.try(:wis) %>">
+
+  </div>
+
+
+
+  <!-- Label and input for cha -->
+
+  <div class="form-group">
+    <label for="cha">
+      CHA
+    </label>
+
+
+    <input type="text" id="cha" name="cha" class="form-control" value="<%= @pc.try(:cha) %>">
+
+  </div>
+
+
+
+  <!-- Label and input for shield -->
+
+
+  <!-- Label and input for ac -->
+
+  <div class="form-group">
+    <label for="ac">
+      AC
+    </label>
+
+
+    <input type="text" id="ac" name="ac" class="form-control" value="<%= @pc.try(:ac) %>">
+
+  </div>
+
+
+
+  <!-- Label and input for initiative -->
+
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create Character
+  </button>
+</form>
+
+<hr>
+
+<a href="/pcs">
+  Go back
+</a>

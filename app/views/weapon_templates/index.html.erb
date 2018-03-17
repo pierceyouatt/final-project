@@ -1,0 +1,72 @@
+<h1>
+  All weapons
+</h1>
+
+<a href="/weapons/new">
+  Add a new weapon
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      Name
+    </th>
+
+
+    <th>
+      Mindamage
+    </th>
+
+
+    <th>
+      Maxdamage
+    </th>
+
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @weapons.each do |weapon| %>
+  <tr>
+    <td>
+      <a href="/weapons/<%= weapon.id %>"><%= weapon.name %></a>
+    </td>
+
+
+    <td>
+      <%= weapon.mindamage %>
+    </td>
+
+
+    <td>
+      <%= weapon.maxdamage %>
+    </td>
+
+
+    <td>
+      <%= time_ago_in_words(weapon.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(weapon.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/weapons/<%= weapon.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

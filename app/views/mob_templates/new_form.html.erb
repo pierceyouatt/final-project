@@ -1,0 +1,85 @@
+
+<!-- Validation failure messages -->
+<% if @mob.present? %>
+  <% if @mob.errors.any? %>
+    <% @mob.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+<h1>
+  Add a new enemy
+</h1>
+
+<hr>
+
+<form action="/create_mob" method="post">
+
+  <!-- Label and input for name -->
+
+  <div class="form-group">
+    <label for="name">
+      Name
+    </label>
+
+
+    <input type="text" id="name" name="name" class="form-control" value="<%= @mob.try(:name) %>">
+
+  </div>
+
+  <div class="form-group">
+    <label for="hp">
+      HP
+    </label>
+
+
+    <input type="text" id="hp" name="hp" class="form-control" value="<%= @mob.try(:hp) %>">
+
+  </div>
+
+  <!-- Label and input for encounter_id -->
+
+  <div class="form-group">
+    <label for="encounter_id">
+      Encounter
+    </label>
+
+    <%= select_tag("encounter_id", options_from_collection_for_select(Encounter.order(:name), :id, :name)) %>
+
+  </div>
+
+
+
+  <!-- Label and input for weapon_id -->
+
+  <div class="form-group">
+    <label for="weapon_id">
+      Weapon
+    </label>
+
+    <%= select_tag("weapon_id", options_from_collection_for_select(Weapon.order(:name), :id, :name)) %>
+
+  </div>
+  or <a href="/weapons/new">add a weapon</a>
+
+
+
+  <!-- Label and input for armor_id -->
+
+  <!-- Label and input for initiative -->
+
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create Enemy
+  </button>
+</form>
+
+<hr>
+
+<a href="/">
+  Go back
+</a>

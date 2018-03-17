@@ -1,0 +1,87 @@
+
+<!-- Validation failure messages -->
+<% if @armor.present? %>
+  <% if @armor.errors.any? %>
+    <% @armor.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+<h1>
+  Add a new armor
+</h1>
+
+<hr>
+
+<form action="/create_armor" method="post">
+
+  <!-- Label and input for name -->
+
+  <div class="form-group">
+    <label for="name">
+      Name
+    </label>
+
+
+    <input type="text" id="name" name="name" class="form-control" value="<%= @armor.try(:name) %>">
+
+  </div>
+
+
+
+  <!-- Label and input for armortype -->
+
+  <div class="form-group">
+    <label for="armortype">
+      Armortype
+    </label>
+
+
+    <input type="text" id="armortype" name="armortype" class="form-control" value="<%= @armor.try(:armortype) %>">
+
+  </div>
+
+
+
+  <!-- Label and input for armorac -->
+
+  <div class="form-group">
+    <label for="armorac">
+      Armorac
+    </label>
+
+
+    <input type="text" id="armorac" name="armorac" class="form-control" value="<%= @armor.try(:armorac) %>">
+
+  </div>
+
+
+
+  <!-- Label and input for armorstr -->
+
+  <div class="form-group">
+    <label for="armorstr">
+      Armorstr
+    </label>
+
+
+    <input type="text" id="armorstr" name="armorstr" class="form-control" value="<%= @armor.try(:armorstr) %>">
+
+  </div>
+
+
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create armor
+  </button>
+</form>
+
+<hr>
+
+<a href="/armors">
+  Go back
+</a>

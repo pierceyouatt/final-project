@@ -1,0 +1,92 @@
+<h1>
+  All armors
+</h1>
+
+<a href="/armors/new">
+  Add a new armor
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+
+    <th>
+      Name
+    </th>
+
+
+    <th>
+      Armortype
+    </th>
+
+
+    <th>
+      Armorac
+    </th>
+
+
+    <th>
+      Armorstr
+    </th>
+
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @armors.each do |armor| %>
+  <tr>
+    <td>
+      <%= armor.id %>
+    </td>
+
+
+    <td>
+      <%= armor.name %>
+    </td>
+
+
+    <td>
+      <%= armor.armortype %>
+    </td>
+
+
+    <td>
+      <%= armor.armorac %>
+    </td>
+
+
+    <td>
+      <%= armor.armorstr %>
+    </td>
+
+
+    <td>
+      <%= time_ago_in_words(armor.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(armor.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/armors/<%= armor.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

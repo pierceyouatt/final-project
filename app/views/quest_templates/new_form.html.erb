@@ -1,0 +1,53 @@
+
+<!-- Validation failure messages -->
+<% if @quest.present? %>
+  <% if @quest.errors.any? %>
+    <% @quest.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+<h1>
+  Add a new quest
+</h1>
+
+<hr>
+
+<form action="/create_quest" method="post">
+
+  <!-- Label and input for campaign_id -->
+
+  <div class="form-group">
+    <label for="campaign_id">
+      Campaign
+    </label>
+    <%= select_tag("campaign_id", options_from_collection_for_select(Campaign.order(:name), :id, :name)) %>
+  </div>
+<a href="/campaigns/new">Create a campaign</a>
+
+
+  <!-- Label and input for pc_id -->
+
+  <div class="form-group">
+    <label for="pc_id">
+      Character
+    </label>
+    <%= select_tag("pc_id", options_from_collection_for_select(Pc.order(:name), :id, :name)) %>
+  </div>
+<a href="/pcs/new">Create a new character</a>
+
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create quest
+  </button>
+</form>
+
+<hr>
+
+<a href="/quests">
+  Go back
+</a>

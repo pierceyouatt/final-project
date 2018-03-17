@@ -1,0 +1,62 @@
+<h1>
+  All quests
+</h1>
+
+<a href="/quests/new">
+  Add a new quest
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      Campaign
+    </th>
+
+
+    <th>
+      Character
+    </th>
+
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @quests.each do |quest| %>
+  <tr>
+    <td>
+      <a href="/campaigns/<%= quest.campaign_id %>"><%= quest.campaign.name %></a>
+    </td>
+
+
+    <td>
+      <a href="/pcs/<%= quest.pc_id %>"><%= quest.pc.name %></a>
+    </td>
+
+
+    <td>
+      <%= time_ago_in_words(quest.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(quest.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/delete_quest/<%= quest.id %>">
+        Delete Quest
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

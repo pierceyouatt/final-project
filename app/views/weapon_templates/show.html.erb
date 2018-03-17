@@ -1,0 +1,62 @@
+<h1>
+  <%= @weapon.name %> details
+</h1>
+
+<a href="/weapons/<%= @weapon.id %>/edit">
+  Edit weapon
+</a>
+
+<hr>
+
+<dl>
+
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @weapon.name %>
+  </dd>
+
+
+  <dt>
+    Mindamage
+  </dt>
+  <dd>
+    <%= @weapon.mindamage %>
+  </dd>
+
+
+  <dt>
+    Maxdamage
+  </dt>
+  <dd>
+    <%= @weapon.maxdamage %>
+  </dd>
+
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@weapon.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@weapon.updated_at) %> ago
+  </dd>
+</dl>
+
+
+<a href="/delete_weapon/<%= @weapon.id %>">
+  Delete weapon
+</a>
+
+
+<hr>
+
+<a href="/weapons">
+  Go back
+</a>

@@ -1,0 +1,62 @@
+<h1>
+  All armaments
+</h1>
+
+<a href="/wieldings/new">
+  Add a new armament
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      Weapon
+    </th>
+
+
+    <th>
+      Character
+    </th>
+
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @wieldings.each do |wielding| %>
+  <tr>
+    <td>
+      <a href="/weapons/<%= wielding.weapon_id %>"><%= wielding.weapon.name %></a>
+    </td>
+
+
+    <td>
+      <a href="/pcs/<%= wielding.pc_id %>"><%= wielding.pc.name %></a>
+    </td>
+
+
+    <td>
+      <%= time_ago_in_words(wielding.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(wielding.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/delete_wielding/<%= wielding.id %>">
+        Delete Armament
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

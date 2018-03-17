@@ -1,0 +1,46 @@
+
+<!-- Validation failure messages -->
+<% if @encounter.errors.any? %>
+  <% @encounter.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<h1>
+  Edit <%= @encounter.name %>
+</h1>
+
+<hr>
+
+<form action="/update_encounter/<%= @encounter.id %>" method="post">
+
+  <!-- Label and input for campaign_id -->
+
+  <div class="form-group">
+    <label for="campaign_id">
+      Campaign
+    </label>
+    <%= select_tag("campaign_id", options_from_collection_for_select(Campaign.order(:name), :id, :name)) %>
+  </div>
+<a href="/campaigns/new">Create a campaign</a>
+
+  <div class="form-group">
+    <label for="name">
+      Encounter name
+    </label>
+
+    <input type="text" id="name" name="name" class="form-control" value="<%= @encounter.try(:name) %>">
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update encounter
+  </button>
+</form>
+
+<hr>
+
+<a href="/encounters">
+  Go back
+</a>

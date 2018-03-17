@@ -1,0 +1,74 @@
+
+<!-- Validation failure messages -->
+<% if @campaign.errors.any? %>
+  <% @campaign.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<h1>
+  Edit <%= @campaign.name %>
+</h1>
+
+<hr>
+
+<form action="/update_campaign/<%= @campaign.id %>" method="post">
+
+  <!-- Label and input for user_id -->
+
+  <div class="form-group">
+
+    <input type="hidden" name="user_id" class="form-control" value="<%= @campaign.user_id %>">
+
+  <div class="form-group">
+    <label for="name">
+      Campaign Title
+    </label>
+
+
+    <input type="text" id="name" name="name" class="form-control" value="<%= @campaign.name %>">
+
+  </div>
+
+
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update campaign title
+  </button>
+</form>
+
+<hr>
+
+<form action="/create_quest" method="post">
+
+  <!-- Label and input for campaign_id -->
+
+    <input type="hidden" id="campaign_id" name="campaign_id" class="form-control" value="<%= @quest.try(:campaign_id) %>">
+
+  <!-- Label and input for pc_id -->
+
+  <div class="form-group">
+    <label for="pc_id">
+      Character Name
+    </label>
+  <%= select_tag("pc_id", options_from_collection_for_select(Pc.order(:name), :id, :name), :class => "form-control") %>
+  </div>
+
+
+
+  <button class="btn btn-block btn-outline-secondary">
+    Add Character to Campaign
+  </button>
+
+  <div class="form-group">
+  <p class="form-text">
+    or <a href="/pcs/new">create a new character</a>
+  </p>
+</div>
+
+<a href="/campaigns">
+  Go back
+</a>

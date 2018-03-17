@@ -1,0 +1,54 @@
+<h1>
+  <%= @wielding.pc.name %>'s <%= @wielding.weapon.name %>
+</h1>
+
+<a href="/wieldings/<%= @wielding.id %>/edit">
+  Edit Armament
+</a>
+
+<hr>
+
+<dl>
+
+  <dt>
+    Weapon
+  </dt>
+  <dd>
+    <a href="/weapons/<%= @wielding.weapon.id %>"><%= @wielding.weapon.name %></a>
+  </dd>
+
+
+  <dt>
+    Character
+  </dt>
+  <dd>
+    <a href="/pcs/<%= @wielding.pc.id %>"><%= @wielding.pc.name %></a>
+  </dd>
+
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@wielding.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@wielding.updated_at) %> ago
+  </dd>
+</dl>
+
+
+<a href="/delete_wielding/<%= @wielding.id %>">
+  Delete Armament
+</a>
+
+
+<hr>
+
+<a href="/">
+  Go back
+</a>

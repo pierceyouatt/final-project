@@ -1,0 +1,73 @@
+
+<!-- Validation failure messages -->
+<% if @weapon.errors.any? %>
+  <% @weapon.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<h1>
+  Edit <%= @weapon.name %>
+</h1>
+
+<hr>
+
+<form action="/update_weapon/<%= @weapon.id %>" method="post">
+
+  <!-- Label and input for name -->
+
+  <div class="form-group">
+    <label for="name">
+      Name
+    </label>
+
+
+    <input type="text" id="name" name="name" class="form-control" value="<%= @weapon.name %>">
+
+  </div>
+
+
+
+  <!-- Label and input for simple -->
+
+  <!-- Label and input for mindamage -->
+
+  <div class="form-group">
+    <label for="mindamage">
+      Mindamage
+    </label>
+
+
+    <input type="text" id="mindamage" name="mindamage" class="form-control" value="<%= @weapon.mindamage %>">
+
+  </div>
+
+
+
+  <!-- Label and input for maxdamage -->
+
+  <div class="form-group">
+    <label for="maxdamage">
+      Maxdamage
+    </label>
+
+
+    <input type="text" id="maxdamage" name="maxdamage" class="form-control" value="<%= @weapon.maxdamage %>">
+
+  </div>
+
+
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update weapon
+  </button>
+</form>
+
+<hr>
+
+<a href="/weapons">
+  Go back
+</a>

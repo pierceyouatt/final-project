@@ -1,0 +1,59 @@
+
+<!-- Validation failure messages -->
+<% if @girding.present? %>
+  <% if @girding.errors.any? %>
+    <% @girding.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+<h1>
+  Add a new girding
+</h1>
+
+<hr>
+
+<form action="/create_girding" method="post">
+
+  <!-- Label and input for armor_id -->
+
+  <div class="form-group">
+    <label for="armor_id">
+      Armor
+    </label>
+
+
+    <input type="text" id="armor_id" name="armor_id" class="form-control" value="<%= @girding.try(:armor_id) %>">
+
+  </div>
+
+
+
+  <!-- Label and input for pc_id -->
+
+  <div class="form-group">
+    <label for="pc_id">
+      Pc
+    </label>
+
+
+    <input type="text" id="pc_id" name="pc_id" class="form-control" value="<%= @girding.try(:pc_id) %>">
+
+  </div>
+
+
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create girding
+  </button>
+</form>
+
+<hr>
+
+<a href="/girdings">
+  Go back
+</a>

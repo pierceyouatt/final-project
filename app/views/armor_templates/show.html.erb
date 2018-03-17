@@ -1,0 +1,70 @@
+<h1>
+  Armor #<%= @armor.id %> details
+</h1>
+
+<a href="/armors/<%= @armor.id %>/edit">
+  Edit armor
+</a>
+
+<hr>
+
+<dl>
+
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @armor.name %>
+  </dd>
+
+
+  <dt>
+    Armortype
+  </dt>
+  <dd>
+    <%= @armor.armortype %>
+  </dd>
+
+
+  <dt>
+    Armorac
+  </dt>
+  <dd>
+    <%= @armor.armorac %>
+  </dd>
+
+
+  <dt>
+    Armorstr
+  </dt>
+  <dd>
+    <%= @armor.armorstr %>
+  </dd>
+
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@armor.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@armor.updated_at) %> ago
+  </dd>
+</dl>
+
+
+<a href="/delete_armor/<%= @armor.id %>">
+  Delete armor
+</a>
+
+
+<hr>
+
+<a href="/armors">
+  Go back
+</a>

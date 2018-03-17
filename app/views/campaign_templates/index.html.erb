@@ -1,0 +1,163 @@
+<h2>
+  Campaigns You're Running
+</h2>
+
+<a href="/campaigns/new">
+  Add a new campaign
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      Campaign Title
+    </th>
+
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @campaigns.each do |campaign| %>
+    <tr>
+      <td>
+        <a href="/campaigns/<%= campaign.id %>"><%= campaign.name %></a>
+      </td>
+
+
+      <td>
+        <%= time_ago_in_words(campaign.created_at) %> ago
+      </td>
+
+      <td>
+        <%= time_ago_in_words(campaign.updated_at) %> ago
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<h2>
+  Your Characters
+</h2>
+
+<a href="/pcs/new">
+  Add a new character
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      Character Name
+    </th>
+
+
+    <th>
+      Str
+    </th>
+
+
+    <th>
+      Dex
+    </th>
+
+
+    <th>
+      Con
+    </th>
+
+
+    <th>
+      Int
+    </th>
+
+
+    <th>
+      Wis
+    </th>
+
+
+    <th>
+      Cha
+    </th>
+
+
+    <th>
+      AC
+    </th>
+
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @pcs.each do |pc| %>
+  <tr>
+    <td>
+      <a href="/pcs/<%= pc.id %>"><%= pc.name %></a>
+    </td>
+
+
+    <td>
+      <%= pc.str %>
+    </td>
+
+
+    <td>
+      <%= pc.dex %>
+    </td>
+
+
+    <td>
+      <%= pc.con %>
+    </td>
+
+
+    <td>
+      <%= pc.int %>
+    </td>
+
+
+    <td>
+      <%= pc.wis %>
+    </td>
+
+
+    <td>
+      <%= pc.cha %>
+    </td>
+
+
+    <td>
+      <%= pc.ac %>
+    </td>
+
+
+    <td>
+      <%= time_ago_in_words(pc.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(pc.updated_at) %> ago
+    </td>
+  </tr>
+  <% end %>
+</table>

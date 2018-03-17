@@ -1,0 +1,72 @@
+<h1>
+  All girdings
+</h1>
+
+<a href="/girdings/new">
+  Add a new girding
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+
+    <th>
+      Armor
+    </th>
+
+
+    <th>
+      Pc
+    </th>
+
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @girdings.each do |girding| %>
+  <tr>
+    <td>
+      <%= girding.id %>
+    </td>
+
+
+    <td>
+      <%= girding.armor_id %>
+    </td>
+
+
+    <td>
+      <%= girding.pc_id %>
+    </td>
+
+
+    <td>
+      <%= time_ago_in_words(girding.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(girding.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/girdings/<%= girding.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,54 @@
+<h1>
+  Girding #<%= @girding.id %> details
+</h1>
+
+<a href="/girdings/<%= @girding.id %>/edit">
+  Edit girding
+</a>
+
+<hr>
+
+<dl>
+
+  <dt>
+    Armor
+  </dt>
+  <dd>
+    <%= @girding.armor_id %>
+  </dd>
+
+
+  <dt>
+    Pc
+  </dt>
+  <dd>
+    <%= @girding.pc_id %>
+  </dd>
+
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@girding.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@girding.updated_at) %> ago
+  </dd>
+</dl>
+
+
+<a href="/delete_girding/<%= @girding.id %>">
+  Delete girding
+</a>
+
+
+<hr>
+
+<a href="/girdings">
+  Go back
+</a>

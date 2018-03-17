@@ -1,0 +1,82 @@
+<h1>
+  All Enemies
+</h1>
+
+<a href="/mobs/new">
+  Add a new enemy
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      Name
+    </th>
+
+
+    <th>
+      Encounter
+    </th>
+
+
+    <th>
+      Weapon
+    </th>
+
+
+    <th>
+      HP
+    </th>
+
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @mobs.each do |mob| %>
+  <tr>
+    <td>
+      <a href="/mobs/<%= mob.id %>"><%= mob.name %></a>
+    </td>
+
+
+    <td>
+      <a href="/encounters/<%= mob.encounter_id %>"><%= mob.encounter.name %></a>
+    </td>
+
+
+    <td>
+      <a href="/weapons/<%= mob.weapon_id %>"><%= mob.weapon.name %></a>
+    </td>
+
+
+    <td>
+      <%= mob.hp %>
+    </td>
+
+
+    <td>
+      <%= time_ago_in_words(mob.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(mob.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/delete_mob/<%= mob.id %>">
+        Delete Enemy
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

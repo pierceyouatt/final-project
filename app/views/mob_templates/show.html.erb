@@ -1,0 +1,70 @@
+<h1>
+  <%= @mob.name %> details
+</h1>
+
+<a href="/mobs/<%= @mob.id %>/edit">
+  Edit Enemy
+</a>
+
+<hr>
+
+<dl>
+
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @mob.name %>
+  </dd>
+
+
+  <dt>
+    Encounter
+  </dt>
+  <dd>
+    <a href="/encounters/<%= @mob.encounter.id %>"><%= @mob.encounter.name %></a>
+  </dd>
+
+
+  <dt>
+    Weapon
+  </dt>
+  <dd>
+    <a href="/weapons/<%= @mob.weapon.id %>"><%= @mob.weapon.name %></a>
+  </dd>
+
+
+  <dt>
+    HP
+  </dt>
+  <dd>
+    <%= @mob.hp %>
+  </dd>
+
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@mob.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@mob.updated_at) %> ago
+  </dd>
+</dl>
+
+
+<a href="/delete_mob/<%= @mob.id %>">
+  Delete Enemy
+</a>
+
+
+<hr>
+
+<a href="/encounters/<%= @mob.encounter_id %>">
+  Go back
+</a>

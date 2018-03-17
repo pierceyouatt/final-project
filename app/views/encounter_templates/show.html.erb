@@ -1,0 +1,144 @@
+<h1>
+  <%= @encounter.name %> details
+</h1>
+
+<a href="/encounters/<%= @encounter.id %>/edit">
+  Edit encounter
+</a>
+
+<hr>
+
+<dl>
+
+  <dt>
+    Campaign
+  </dt>
+  <dd>
+    <a href="/campaigns/<%= @encounter.campaign.id %>"><%= @encounter.campaign.name %></a>
+  </dd>
+
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@encounter.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@encounter.updated_at) %> ago
+  </dd>
+</dl>
+
+
+<a href="/delete_encounter/<%= @encounter.id %>">
+  Delete encounter
+</a>
+<hr>
+<h2>
+  Player Characters
+</h2>
+
+<table class="table">
+  <tr>
+    <th>
+      Character Name
+    </th>
+
+    <th>
+      Player Name
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @quests.each do |quest| %>
+  <tr>
+    <td>
+      <a href="/pcs/<%= quest.pc.id %>"><%= quest.pc.name %></a>
+    </td>
+
+    <td>
+      <%= quest.pc.user.username %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(quest.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(quest.updated_at) %> ago
+    </td>
+  </tr>
+  <% end %>
+</table>
+<hr>
+<h2>
+  Enemies
+</h2>
+<a href="/mobs/new">
+  Add a new enemy
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      Name
+    </th>
+
+    <th>
+      Weapon
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @mobs.each do |mob| %>
+  <tr>
+    <td>
+      <a href="/mobs/<%= mob.id %>"><%= mob.name %></a>
+    </td>
+
+    <td>
+      <a href="/weapons/<%= mob.weapon.id %>"><%= mob.weapon.name %></a>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(mob.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(mob.updated_at) %> ago
+    </td>
+
+  </tr>
+  <% end %>
+</table>
+
+
+<a href="/encounters">
+  Go back
+</a>

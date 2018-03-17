@@ -1,0 +1,130 @@
+<h1>
+  All Characters
+</h1>
+
+<a href="/pcs/new">
+  Add a new character
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      Character
+    </th>
+
+    <th>
+      Player
+    </th>
+
+
+    <th>
+      STR
+    </th>
+
+
+    <th>
+      DEX
+    </th>
+
+
+    <th>
+      CON
+    </th>
+
+
+    <th>
+      INT
+    </th>
+
+
+    <th>
+      WIS
+    </th>
+
+
+    <th>
+      CHA
+    </th>
+
+
+    <th>
+      AC
+    </th>
+
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @pcs.each do |pc| %>
+  <tr>
+    <td>
+      <a href="/pcs/<%= pc.id %>"><%= pc.name %></a>
+    </td>
+
+    <td>
+      <%= pc.user.username %>
+    </td>
+
+
+    <td>
+      <%= pc.str %>
+    </td>
+
+
+    <td>
+      <%= pc.dex %>
+    </td>
+
+
+    <td>
+      <%= pc.con %>
+    </td>
+
+
+    <td>
+      <%= pc.int %>
+    </td>
+
+
+    <td>
+      <%= pc.wis %>
+    </td>
+
+
+    <td>
+      <%= pc.cha %>
+    </td>
+
+
+    <td>
+      <%= pc.ac %>
+    </td>
+
+
+    <td>
+      <%= time_ago_in_words(pc.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(pc.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/delete_pc/<%= pc.id %>">
+        Delete Character
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

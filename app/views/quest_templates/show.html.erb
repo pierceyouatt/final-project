@@ -1,0 +1,54 @@
+<h1>
+  <%= @quest.pc.name %>'s Quest
+</h1>
+
+<a href="/quests/<%= @quest.id %>/edit">
+  Edit quest
+</a>
+
+<hr>
+
+<dl>
+
+  <dt>
+    Campaign
+  </dt>
+  <dd>
+    <a href="/campaigns/<%= @quest.campaign_id %>"><%= @quest.campaign.name %></a>
+  </dd>
+
+
+  <dt>
+    Character
+  </dt>
+  <dd>
+    <a href="/pcs/<%= @quest.pc_id %>"><%= @quest.pc.name %></a>
+  </dd>
+
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@quest.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@quest.updated_at) %> ago
+  </dd>
+</dl>
+
+
+<a href="/delete_quest/<%= @quest.id %>">
+  Delete quest
+</a>
+
+
+<hr>
+
+<a href="/quests">
+  Go back
+</a>

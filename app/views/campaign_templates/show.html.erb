@@ -1,0 +1,146 @@
+<h2>
+  <%= @campaign.name %> details
+</h2>
+
+<a href="/campaigns/<%= @campaign.id %>/edit">
+  Edit campaign
+</a>
+
+<hr>
+
+<dl>
+
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @campaign.user.username %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@campaign.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@campaign.updated_at) %> ago
+  </dd>
+</dl>
+<a href="/delete_campaign/<%= @campaign.id %>">
+  Delete campaign
+</a>
+
+
+<h2>
+  <%= @campaign.name %> Characters
+</h2>
+<a href="/quests/new">
+  Add a character
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      Character Name
+    </th>
+
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @quests.each do |quest| %>
+  <tr>
+    <td>
+      <a href="/pcs/<%= quest.pc.id %>"><%= quest.pc.name %></a>
+    </td>
+
+
+    <td>
+      <%= time_ago_in_words(quest.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(quest.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/delete_quest/<%= quest.id %>">Remove from Campaign</a>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+
+
+<h2>
+  Encounters in <%= @campaign.name %>
+</h2>
+<a href="/encounters/new">
+  Add a new encounter
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      Encounter Name
+    </th>
+
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @encounters.each do |encounter| %>
+  <tr>
+    <td>
+      <a href="/encounters/<%= encounter.id %>"><%= encounter.name %></a>
+    </td>
+
+
+    <td>
+      <%= time_ago_in_words(encounter.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(encounter.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/delete_encounter/<%= encounter.id %>">Remove from Campaign</a>
+  </tr>
+  <% end %>
+</table>
+
+
+
+<hr>
+
+<a href="/campaigns">
+  Go back
+</a>

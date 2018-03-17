@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221161615) do
+ActiveRecord::Schema.define(version: 20180317033823) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -41,6 +41,107 @@ ActiveRecord::Schema.define(version: 20180221161615) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "armors", force: :cascade do |t|
+    t.string "name"
+    t.string "armortype"
+    t.integer "armorac"
+    t.integer "armorstr"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "campaigns", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "encounters", force: :cascade do |t|
+    t.integer "campaign_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "girdings", force: :cascade do |t|
+    t.integer "armor_id"
+    t.integer "pc_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mobs", force: :cascade do |t|
+    t.string "name"
+    t.integer "encounter_id"
+    t.integer "weapon_id"
+    t.integer "armor_id"
+    t.integer "initiative"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "hp"
+  end
+
+  create_table "pcs", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "str"
+    t.integer "strmod"
+    t.integer "dex"
+    t.integer "dexmod"
+    t.integer "con"
+    t.integer "int"
+    t.integer "wis"
+    t.integer "cha"
+    t.boolean "shield"
+    t.integer "ac"
+    t.integer "initiative"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "quests", force: :cascade do |t|
+    t.integer "campaign_id"
+    t.integer "pc_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "weapons", force: :cascade do |t|
+    t.string "name"
+    t.boolean "simple"
+    t.boolean "ranged"
+    t.integer "mindamage"
+    t.string "maxdamage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "wieldings", force: :cascade do |t|
+    t.integer "weapon_id"
+    t.integer "pc_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

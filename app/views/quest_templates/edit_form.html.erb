@@ -1,0 +1,51 @@
+
+<!-- Validation failure messages -->
+<% if @quest.errors.any? %>
+  <% @quest.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<h1>
+  Update Quest
+</h1>
+
+<hr>
+
+<form action="/update_quest/<%= @quest.id %>" method="post">
+
+  <!-- Label and input for campaign_id -->
+
+  <div class="form-group">
+    <label for="campaign_id">
+      Campaign
+    </label>
+    <%= select_tag("campaign_id", options_from_collection_for_select(Campaign.order(:name), :id, :name)) %>
+  </div>
+
+
+
+  <!-- Label and input for pc_id -->
+
+  <div class="form-group">
+    <label for="pc_id">
+      Character
+    </label>
+    <%= select_tag("pc_id", options_from_collection_for_select(Pc.order(:name), :id, :name)) %>
+  </div>
+
+
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update quest
+  </button>
+</form>
+
+<hr>
+
+<a href="/quests">
+  Go back
+</a>

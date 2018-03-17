@@ -1,0 +1,57 @@
+
+<!-- Validation failure messages -->
+<% if @girding.errors.any? %>
+  <% @girding.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<h1>
+  Edit girding #<%= @girding.id %>
+</h1>
+
+<hr>
+
+<form action="/update_girding/<%= @girding.id %>" method="post">
+
+  <!-- Label and input for armor_id -->
+
+  <div class="form-group">
+    <label for="armor_id">
+      Armor
+    </label>
+
+
+    <input type="text" id="armor_id" name="armor_id" class="form-control" value="<%= @girding.armor_id %>">
+
+  </div>
+
+
+
+  <!-- Label and input for pc_id -->
+
+  <div class="form-group">
+    <label for="pc_id">
+      Pc
+    </label>
+
+
+    <input type="text" id="pc_id" name="pc_id" class="form-control" value="<%= @girding.pc_id %>">
+
+  </div>
+
+
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update girding
+  </button>
+</form>
+
+<hr>
+
+<a href="/girdings">
+  Go back
+</a>

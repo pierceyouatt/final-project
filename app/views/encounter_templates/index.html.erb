@@ -1,0 +1,62 @@
+<h1>
+  All encounters
+</h1>
+
+<a href="/encounters/new">
+  Add a new encounter
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      Encounter
+    </th>
+
+
+    <th>
+      Campaign
+    </th>
+
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @encounters.each do |encounter| %>
+  <tr>
+    <td>
+      <a href="/encounters/<%= encounter.id %>"><%= encounter.name %></a>
+    </td>
+
+
+    <td>
+      <a href="/campaigns/<%= encounter.campaign_id %>"><%= encounter.campaign.name %></a>
+    </td>
+
+
+    <td>
+      <%= time_ago_in_words(encounter.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(encounter.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/delete_encounter/<%= encounter.id %>">
+        Delete Encounter
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
